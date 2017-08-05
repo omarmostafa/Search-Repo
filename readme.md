@@ -22,7 +22,7 @@ Default Sorting is by Price and ASC if you don't entered sorting
 
 
 #ِAlgorithms
-Merge Sort because of its complexity is O(n * log(n)) but Quick sort is O(n2) 
+Merge Sort because of its complexity is O(n * log(n)) but Quick sort is O(n2)
 
 
 
