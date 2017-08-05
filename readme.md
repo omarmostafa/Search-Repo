@@ -1,21 +1,23 @@
-# Lumen PHP Framework
+#Framework
+i used lumen framework
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+#run project
+clone project and run {composer install} command then  {php -S localhost:8000 -t public}
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+#run unit testing
+run {./vendor/bin/phpunit} command
 
-## Official Documentation
 
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
+#Request
+url : /search
+Body : {"name": "media","city":"dubai","dates":{"from":"10-10-2020","to":"15-10-2020"},"price":{"from":100,"to":105},"sorted_by":"name","sort":"DESC"}
+you can remove any of the following if you don't need to filter by any one of its
 
-## Security Vulnerabilities
+sorted_by must be name or price
+sort must be ASC or DESC
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-## License
+#Assumptions
+Default Sorting is by Price and ASC if you don't entered sorting
 
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+

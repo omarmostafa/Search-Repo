@@ -31,10 +31,12 @@ class HotelManager
      * @param $sort
      * @return array|mixed
      */
-    public function sort($sorted_by,$sort)
+    public function sort(string $sorted_by,string $sort)
     {
-        $result=$this->sort->sort($this->result,$sorted_by,$sort);
-        return $result;
+        if(count($this->result)>0) {
+            $this->result = $this->sort->sort($this->result, $sorted_by, $sort);
+        }
+        return $this->result;
     }
     /**
      * use Guzzle to make request and get Results

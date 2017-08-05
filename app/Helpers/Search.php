@@ -70,14 +70,14 @@ class Search
      * @param array $dates
      * @return bool
      */
-    public function findByDateRange(array $date_range,array $dates) : bool 
+    public function findByDateRange(array $date_range,array $dates) : bool
     {
         $status=false;
         foreach ($dates as $date) // loop through available times
         {
-            if(strtotime($date['from'])<=strtotime($date_range['from']) && strtotime($date['to'])>=strtotime($date_range['to'])) // if search date range is in any date available
+            if(strtotime($date['from']) <= strtotime($date_range['from']) && strtotime($date['to']) >= strtotime($date_range['to'])) // if search date range is in any date available
             {
-                $status= true;
+                $status=true;
             }
         }
         return $status;

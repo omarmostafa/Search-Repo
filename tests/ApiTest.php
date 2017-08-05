@@ -8,6 +8,9 @@
  */
 class ApiTest extends TestCase
 {
+    /**
+     * test if entered from price only
+     */
     public function testPriceValidation()
     {
         $this->json('POST', '/search', ['price' => ['from'=>100]])
@@ -16,6 +19,9 @@ class ApiTest extends TestCase
             ]);
     }
 
+    /**
+     * test if entered to price only
+     */
     public function testDateValidation()
     {
         $this->json('POST', '/search', ['dates' => ['from'=>'15-11-2020']])
@@ -24,6 +30,9 @@ class ApiTest extends TestCase
             ]);
     }
 
+    /**
+     * test if entered a non format date
+     */
     public function testDateValidationWithString()
     {
         $this->json('POST', '/search', ['dates' => ['from'=>'15-11-2020','to'=>'test']])
@@ -31,6 +40,10 @@ class ApiTest extends TestCase
                 'success' => false,
             ]);
     }
+
+    /**
+     * test price with negative value
+     */
     public function testPriceValidationWithNegative()
     {
         $this->json('POST', '/search', ['price' => ['from'=>-100,'to'=>105]])
@@ -38,6 +51,10 @@ class ApiTest extends TestCase
                 'success' => false,
             ]);
     }
+
+    /**
+     * enter another value in sorted by
+     */
     public function testSortedByValidation()
     {
         $this->json('POST', '/search', ['sorted_by'=>'city'])
@@ -45,6 +62,10 @@ class ApiTest extends TestCase
                 'success' => false,
             ]);
     }
+
+    /**
+     * enter a wrong value in sort dir
+     */
     public function testSortDirValidation()
     {
         $this->json('POST', '/search', ['sort'=>'ASCC'])
@@ -52,6 +73,10 @@ class ApiTest extends TestCase
                 'success' => false,
             ]);
     }
+
+    /**
+     * enter valid fields
+     */
     public function testSuccessValidation()
     {
         $this->json('POST', '/search', ['name'=>'media','city'=>'dubai','price'=>['from'=>100,'to'=>105],
