@@ -13,7 +13,7 @@ class Sort
 {
 
     /**
-     * take array and divide it into left and right
+     * Merge sort O(nlog(n))
      * @param array $array
      * @param string $sorted_by
      * @param string $sort
@@ -26,10 +26,10 @@ class Sort
             return $array;
         }
 
-        $mid = count($array) / 2;
+        $mid = ceil(count($array) / 2);
         $left = array_slice($array, 0, $mid);
         $right = array_slice($array, $mid);
-        $left = $this->sort($left,$sorted_by,$sort);
+        $left = $this->sort($left,$sorted_by,$sort); // r
         $right = $this->sort($right,$sorted_by,$sort);
         return $this->merge($left, $right,$sorted_by,$sort);
     }
@@ -44,36 +44,36 @@ class Sort
      */
    public function merge(array $left, array $right, string $sorted_by,string $sort) : array
     {
-        $res = array();
+        $final_result = array();
 
         if($sort=='ASC')
         {
-           $result= $this->sortASC($left,$right,$res,$sorted_by);
-            $res=$result['res'];
-            $left=$result['left'];
-            $right=$result['right'];
+           $temporary_result= $this->sortASC($left,$right,$final_result,$sorted_by);
+            $final_result=$temporary_result['res'];
+            $left=$temporary_result['left'];
+            $right=$temporary_result['right'];
         }
         elseif ($sort='DESC')
         {
-            $result= $this->sortDESC($left,$right,$res,$sorted_by);
-            $res=$result['res'];
-            $left=$result['left'];
-            $right=$result['right'];
+            $temporary_result= $this->sortDESC($left,$right,$final_result,$sorted_by);
+            $final_result=$temporary_result['res'];
+            $left=$temporary_result['left'];
+            $right=$temporary_result['right'];
         }
 
         while (count($left) > 0)
         {
-            $res[] = $left[0];
+            $final_result[] = $left[0];
             $left = array_slice($left, 1);
         }
 
         while (count($right) > 0)
         {
-            $res[] = $right[0];
+            $final_result[] = $right[0];
             $right = array_slice($right, 1);
         }
 
-        return $res;
+        return $final_result;
     }
 
     /**

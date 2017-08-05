@@ -9,17 +9,17 @@ class Search
      * @param array $filters
      * @return array
      */
-    public function Search(array $items,array $filters) : array 
+    public function filter(array $items,array $filters) : array 
     {
         foreach ($items as $key => $item)
         {
             $status=true;
 
-            if(isset($filters['name']) && !$this->findByName($filters['name'],$item['name'])) // check if hotel name is in filters and name matches hotel name
+            if(isset($filters['name']) && !$this->stringSearch($filters['name'],$item['name'])) // check if hotel name is in filters and name matches hotel name
             {
                 $status = false;
             }
-            if(isset($filters['city']) && !$this->findByName($filters['city'],$item['city'])) // check if city is in filters and city matches city in loop
+            if(isset($filters['city']) && !$this->stringSearch($filters['city'],$item['city'])) // check if city is in filters and city matches city in loop
             {
                 $status = false;
             }
@@ -40,12 +40,13 @@ class Search
     }
 
     /**
+     * complexity O(m*n)
      * check matching of token and name
      * @param string $token
      * @param string $name
      * @return bool
      */
-    public function findByName(string $token,string $name) : bool
+    public function stringSearch(string $token,string $name) : bool
     {
         $likely=0;
         $token=str_replace('hotel', '', strtolower($token)); //skip hotels from token
@@ -74,9 +75,9 @@ class Search
         $status=false;
         foreach ($dates as $date) // loop through available times
         {
-            if($date['from']<=$date_range['from'] && $date['to']>=$date_range['to']) // if search date range is in any date available
+            if(strtotime($date['from'])<=strtotime($date_range['from']) && strtotime($date['to'])>=strtotime($date_range['to'])) // if search date range is in any date available
             {
-                $status=true;
+                $status= true;
             }
         }
         return $status;
