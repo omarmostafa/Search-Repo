@@ -4,7 +4,7 @@
   - use search techniques to filter items using name , city , price and date range
   - allow sorting by name and price using merge sort
 
-# Frmework
+# Framework
  - Lumen Framework
 
 ### Installation
