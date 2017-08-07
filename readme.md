@@ -5,7 +5,7 @@
   - allow sorting by name and price using merge sort
 
 # Frmework
-Lumen Framework
+ - Lumen Framework
 
 ### Installation
 
@@ -46,8 +46,8 @@ $ ./vendor/bin/phpunit
  - Default Sorting is by Price and ASC if you don't entered sorting
 
 
-#ِ Algorithms
-- Merge Sort because of its complexity is O(n * log(n)) but Quick sort is O(n2)
+# Algorithms
+ - Merge Sort because of its complexity is O(n * log(n)) but Quick sort is O(n2)
 
 
 
